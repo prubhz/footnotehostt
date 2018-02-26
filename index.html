@@ -1,0 +1,156 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>footNote</title>
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDmkSh28xk4oieXNgAGfpARxQigpEIk37g" async defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+  <script src="functionsJS.js" charset="utf-8"></script>
+  <!-- <script src="angularFunctions.js" charset="utf-8"></script> -->
+  <script src="angularFunctions_serv.js" charset="utf-8"></script>
+  <!-- Our Custom CSS -->
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body id="body" ng-app="footNote" ng-controller="myCtrl">
+  <div class="wrapper">
+    <!-- Page Content Holder -->
+    <div id="content" class="row">
+      <div class=" col-sm-12">
+        <nav class="navbar navbar-default container-fluid">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <div class="nav-container">
+                <div class="app-title">
+                  <h3>footNote</h3>
+                </div>
+                <div class="app-menu">
+                  <button class="btn btn-info" type="button" onclick="drawCondition()" id="selBut">Select Area</button>
+                  <button class="btn btn-info" type="button" id="getMes" ng-click="getMessage()">Find Messages</button>
+                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#postModal">Post Message</button>
+                  <button class="btn btn-info" type="button" id="clrSel" onclick="clearDraw()" ng-click="clearSelection()">Clear Selection</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="mapCont" id="map"></div>
+            <!-- <div class="backCard"> -->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="backCard">
+                  <p class = "title">Rate Messages</p>
+                  <div class="row topCard elemRate" onclick="showPolyRate(this)" ng-repeat="message in rteMessages track by $index">
+                    <div class="col-sm-2">{{message.alias}}</div>
+                    <div class="col-sm-4">{{message.message}}</div>
+                    <div class="col-sm-2">{{message.UR}}</div>
+                    <div class="col-sm-2">{{message.MR}}</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="backCard">
+                  <p class="title">My Messages</p>
+                  <div class="row topCard elemMe" onclick="showPolyMe(this)" ng-repeat="message in usrMessages track by $index">
+                    <div class="col-sm-2">{{message.alias}}</div>
+                    <div class="col-sm-10">{{message.message}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+               <div class="backcard">    <!--onmouseout="hidePoly(this)" -->
+                  <p class="title">Feed</p>
+                  <div class="row topCard  elem" onclick="showPoly(this)"  ng-repeat="message in respMessages track by $index">
+                    <div class="col-sm-2" >{{message.alias}}</div>
+                    <div  class="col-sm-10" >{{message.message}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- </div> -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLongTitle">Post New Message</h5>
+          <p>Please make sure you have selected an area on the map before posting the message!</p>
+        </div>
+        <div class="modal-body">
+          <label> Message
+            <input id ="message" type="text" ng-model ="user.message">
+          </label>
+          <label> ID
+            <input id ="numbr" type="text" ng-model ="user.id" value="$scope.user.id" disabled>
+          </label>
+          <label> Alias
+            <input id ="alias" type="text" ng-model ="user.alias">
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <label> Expire In (hours)
+            <input id ="expiry" type="number" min="3" value="3">
+          </label>
+          <button type="button" class="btn btn-primary" ng-click="send()" data-dismiss="modal"> Post Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLongTitle">Please Verify Yourself</h5>
+          <p>As of now footNote only accepts student email accounts<p>
+            <ul>
+              <li>Please enter your email and press verify to get you verification code </li>
+              <li>Enter the code and press login</li>
+            </ul>
+        </div>
+        <div class="modal-body">
+          <label> Email
+            <input id ="message" type="text" ng-model ="user.id">
+          </label>
+          <label> Verification
+            <input id ="verNumbr" type="text">
+        </div>
+        <div class="modal-footer">
+          <!-- <input type="checkbox" id="chkBox" /> -->
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" id="loginClose" disabled>Close</button> -->
+          <button type="button" class="btn btn-primary" id="verify"  ng-click="verify()" > Verify</button>
+          <button type="button" class="btn btn-primary" id="loginBut" ng-click="verify2()" > Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <!-- Bootstrap Js CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="onLoadJS.js" charset="utf-8"></script>
+
+</body>
+
+</html>

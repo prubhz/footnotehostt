@@ -1,0 +1,176 @@
+/*
+    DEMO STYLE
+*/
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+
+a, a:hover, a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.navbar {
+  padding: 15px 10px;
+  /*background: #fff;*/
+  background-color: #3c986b;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 20px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mapCont {
+  height: 50%;
+  padding: 15px 10px;
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 20px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.list_group {
+  padding: 15px 10px;
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 20px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+  box-shadow: none;
+  outline: none !important;
+  border: none;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
+}
+
+.topCard {
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(150, 150, 150, 1);
+  -moz-box-shadow: 0px 2px 2px 0px rgba(150, 150, 150, 1);
+  box-shadow: 0px 2px 2px 0px rgba(150, 150, 150, 1);
+  padding: 5px;
+  margin-bottom: 5px;
+  margin-left: 0;
+  margin-right: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
+
+}
+
+.title {
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: xx-large;
+  /*font-weight: bold;*/
+}
+
+.backCard {
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(150, 150, 150, 1);
+  -moz-box-shadow: 0px 2px 2px 0px rgba(150, 150, 150, 1);
+  box-shadow: 0px 2px 2px 0px rgba(150, 150, 150, 1);
+  padding: 5px;
+  margin-bottom: 5px;
+  margin-left: 0;
+  margin-right: 0;
+  font-family: 'Poppins', sans-serif;
+  /*background: #97daf9;*/
+  background-color: #3c986b;
+   /*overflow: scroll;*/
+  /* #3c5a98;*/
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+  display: flex;
+  align-items: stretch;
+  perspective: 1500px;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+  padding: 20px;
+  min-height: 100vh;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    NAV
+----------------------------------------------------- */
+
+@media (min-width: 600px) {
+  .app-title {
+    float: left;
+    height: 100%;
+    margin-right: 10px;
+  }
+}
+
+.app-title>h3 {
+  line-height: 40px;
+  margin: 0;
+  color: white;
+}
+
+@media (min-width: 600px) {
+  .app-menu {
+    float: left;
+    height: 100%;
+  }
+}
+
+@media (min-width: 600px) {
+  .nav-container {
+    height: 40px;
+  }
+}
+
+.app-menu button {
+  height: 40px;
+  max-height: 40px;
+  /*position: fixed;*/
+  /*padding: 9px 12px!important;*/
+}
+
+.btn {
+  background-color: #20b36a;
+  border-color: #3c986b;
+  /*-webkit-box-shadow: 3px 4px 4px 0px rgba(72,168,101,1);
+    -moz-box-shadow: 3px 4px 4px 0px rgba(72,168,101,1);
+    box-shadow: 3px 4px 4px 0px rgba(72,168,101,1);*/
+}
