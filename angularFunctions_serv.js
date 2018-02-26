@@ -94,7 +94,7 @@ app.controller('myCtrl', function($scope, $http) {
       // window.alert("verification sent");
       console.log('breakpoint4');
 
-        $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:3000/api/mail', payload).success(function (data){
+        $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:8080/api/mail', payload).success(function (data){
           console.log("mail sent");
         }).error(function (error){
             console.log('error with sending', error);
