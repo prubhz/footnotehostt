@@ -226,7 +226,7 @@ app.controller('myCtrl', function($scope, $http) {
       window.alert("you have exceeded the number of posts per day please try tomorrow")
     } else if ($scope.user.lastpost == null || currentTime.getMinutes() > lastPost.getMinutes() + 1) {
 
-      $http.post('https://ec2-52-15-85-14.us-east-2.compute.amazonaws.com:8080/api/add', payload).then(function(response) {
+      $http.post('https://ec2-52-15-85-14.us-east-2.compute.amazonaws.com:8080/api/add', payload ).then(function(response) {
         console.log('response', response);
         $scope.user.lastpost = lastPost;
         //$scope.user.posts = response.data[0].count;
