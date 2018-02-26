@@ -19,7 +19,7 @@ app.controller('myCtrl', function($scope, $http) {
       "coords": loc.coords
     }
     //console.log("update location payload :  ", payload.coords);
-    $http.post('https://ec2-18-222-75-236.us-east-2.compute.amazonaws.com:3000/api/addLoc', payload).then(function(response) {
+    $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:3000/api/addLoc', payload).then(function(response) {
 
       $scope.user.location = response.data.location;
       $scope.user.threshold = response.data.threshold;
@@ -42,7 +42,7 @@ app.controller('myCtrl', function($scope, $http) {
       }
 
       //  console.log(' $scope.user.id', payload.userID);
-      $http.post('https://ec2-18-222-75-236.us-east-2.compute.amazonaws.com:3000/api/logEntry', payload).then(function(response) {
+      $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:3000/api/logEntry', payload).then(function(response) {
         console.log("logEntry");
         $scope.user.rating = response.data.rating;
         console.log("rating in UI : ", response.data);
@@ -67,7 +67,7 @@ app.controller('myCtrl', function($scope, $http) {
         "verf": $scope.user.verf
       }
       //  console.log(' $scope.user.id', payload.userID);
-      $http.post('https://ec2-18-222-75-236.us-east-2.compute.amazonaws.com:3000/api/mail', payload).then(function(response) {
+      $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:3000/api/mail', payload).then(function(response) {
         console.log("mail sent");
       });
       window.alert("verification sent");
@@ -83,7 +83,7 @@ app.controller('myCtrl', function($scope, $http) {
       }
 
       //  console.log(' $scope.user.id', payload.userID);
-      $http.post('https://ec2-18-222-75-236.us-east-2.compute.amazonaws.com:3000/api/mail', payload).then(function(response) {
+      $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:3000/api/mail', payload).then(function(response) {
         console.log("mail sent");
       });
       window.alert("verification sent");
@@ -106,7 +106,7 @@ app.controller('myCtrl', function($scope, $http) {
     $scope.coords = window.polyPoints;
     //console.log('$scope.coords', $scope.coords);
     // polyPoints = window.polyPoints;
-    $http.post('https://ec2-18-222-75-236.us-east-2.compute.amazonaws.com:3000/api/retrieve', [$scope.coords]).then(function(response) {
+    $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:3000/api/retrieve', [$scope.coords]).then(function(response) {
       //  $scope.respMessages.push(response.data[0].messageContent);
       //console.log('resp', response)
       $scope.respMessages = [];
@@ -126,7 +126,7 @@ app.controller('myCtrl', function($scope, $http) {
   $scope.getInitialMessage = function(coords) {
     //console.log('getInitialMessage coords:', coords);
     // polyPoints = window.polyPoints;
-    $http.post('https://ec2-18-222-75-236.us-east-2.compute.amazonaws.com:3000/api/retrieve', [coords]).then(function(response) {
+    $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:3000/api/retrieve', [coords]).then(function(response) {
       //  $scope.respMessages.push(response.data[0].messageContent);
 
       $scope.respMessages = [];
@@ -148,7 +148,7 @@ app.controller('myCtrl', function($scope, $http) {
 
     console.log('getMyMessages', user);
     // polyPoints = window.polyPoints;
-    $http.post('https://ec2-18-222-75-236.us-east-2.compute.amazonaws.com:3000/api/retrieveMe', [hash(user),path]).then(function(response) {
+    $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:3000/api/retrieveMe', [hash(user),path]).then(function(response) {
       //  $scope.respMessages.push(response.data[0].messageContent);
       console.log('getMyMessages : response', response.data.myMessages);
       console.log('getMyMessages : response : rate', response.data.toRate);
@@ -211,7 +211,7 @@ app.controller('myCtrl', function($scope, $http) {
       window.alert("you have exceeded the number of posts per day please try tomorrow")
     } else if ($scope.user.lastpost == null || currentTime.getMinutes() > lastPost.getMinutes() + 1) {
 
-      $http.post('https://ec2-18-222-75-236.us-east-2.compute.amazonaws.com:3000/api/add', payload).then(function(response) {
+      $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:3000/api/add', payload).then(function(response) {
         console.log('response', response);
         $scope.user.lastpost = lastPost;
         //$scope.user.posts = response.data[0].count;
