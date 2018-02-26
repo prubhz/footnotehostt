@@ -19,8 +19,7 @@ app.controller('myCtrl', function($scope, $http) {
       "coords": loc.coords
     }
     //console.log("update location payload :  ", payload.coords);
-    $http.post('https://ec2-52-15-85-14.us-east-2.compute.amazonaws.com:8080
-/api/addLoc', payload).then(function(response) {
+    $http.post('https://ec2-52-15-85-14.us-east-2.compute.amazonaws.com:8080/api/addLoc', payload).then(function(response) {
 
       $scope.user.location = response.data.location;
       $scope.user.threshold = response.data.threshold;
@@ -43,8 +42,7 @@ app.controller('myCtrl', function($scope, $http) {
       }
 
       //  console.log(' $scope.user.id', payload.userID);
-      $http.post('https://ec2-52-15-85-14.us-east-2.compute.amazonaws.com:8080
-/api/logEntry', payload).then(function(response) {
+      $http.post('https://ec2-52-15-85-14.us-east-2.compute.amazonaws.com:8080/api/logEntry', payload).then(function(response) {
         console.log("logEntry");
         $scope.user.rating = response.data.rating;
         console.log("rating in UI : ", response.data);
