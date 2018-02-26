@@ -89,6 +89,7 @@ app.controller('myCtrl', function($scope, $http) {
       //   console.log(error);
       // });
       // window.alert("verification sent");
+      console.log('test');
 
         $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:3000/api/mail', payload).success(function (data){
           console.log("mail sent");
