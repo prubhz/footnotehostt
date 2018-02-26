@@ -97,8 +97,7 @@ app.controller('myCtrl', function($scope, $http) {
         $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:3000/api/mail', payload).success(function (data){
           console.log("mail sent");
         }).error(function (error){
-
-            console.log(error); // Undefined!
+            console.log('error with sending', error);
             // (This is the spot that I don't get it.)
         });
         window.alert("verification sent");
