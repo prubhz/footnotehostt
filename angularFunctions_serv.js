@@ -42,8 +42,7 @@ app.controller('myCtrl', function($scope, $http) {
       }
 
       //  console.log(' $scope.user.id', payload.userID);
-      $http.post('https://ec2-52-15-85-14.us-east-2.compute.amazonaws.com:8080
-/api/logEntry', payload).then(function(response) {
+      $http.post('https://ec2-52-15-85-14.us-east-2.compute.amazonaws.com:8080/api/logEntry', payload).then(function(response) {
         console.log("logEntry");
         $scope.user.rating = response.data.rating;
         console.log("rating in UI : ", response.data);
