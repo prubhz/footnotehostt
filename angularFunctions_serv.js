@@ -54,6 +54,8 @@ app.controller('myCtrl', function($scope, $http) {
   };
 
   $scope.verify = function() {
+
+    console.log('breakpoint1');
     // var rndNum =
     $scope.user.verf = rndNum;
     console.log('verf (1):', $scope.user.verf);
@@ -71,9 +73,10 @@ app.controller('myCtrl', function($scope, $http) {
         console.log("mail sent");
       });
       window.alert("verification sent");
-
+      console.log('breakpoint2');
     } else if (string.indexOf(substring) == -1 || string == null) {
       window.alert("Invalid Email");
+      console.log('breakpoint3');
     } else {
 
       //send off email request
@@ -89,7 +92,7 @@ app.controller('myCtrl', function($scope, $http) {
       //   console.log(error);
       // });
       // window.alert("verification sent");
-      console.log('test');
+      console.log('breakpoint4');
 
         $http.post('https://ec2-13-59-133-80.us-east-2.compute.amazonaws.com:3000/api/mail', payload).success(function (data){
           console.log("mail sent");
@@ -100,7 +103,7 @@ app.controller('myCtrl', function($scope, $http) {
         });
         window.alert("verification sent");
     }
-
+    console.log('breakpoint5');
     document.getElementById('loginBut').disabled = false;
     document.getElementById('verify').disabled = true;
   };
